@@ -12,9 +12,9 @@ RUN echo "https://mirrors.aliyun.com/alpine/v3.8/main/" > /etc/apk/repositories 
     && docker-php-ext-install phpredis \
     && composer global require phpmd/phpmd --no-suggest --no-ansi --no-interaction \
     && ln -s /srv/vendor/bin/phpmd /usr/local/bin/phpmd \
-    && mkdir /root/.ssh && \
-        echo $SSH_KEY | cut -d "\"" -f 2 > /root/.ssh/id_rsa && \
-        chmod 0600 /root/.ssh/id_rsa && \
-        eval `ssh-agent -s` && \
-        ssh-add /root/.ssh/id_rsa && \
-        echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+    && mkdir -p /root/.ssh  \
+    && echo $SSH_KEY | cut -d "\"" -f 2 > /root/.ssh/id_rsa \
+    && chmod 0600 /root/.ssh/id_rsa  \
+    && eval `ssh-agent -s` \
+    && ssh-add /root/.ssh/id_rsa  \
+    && echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
