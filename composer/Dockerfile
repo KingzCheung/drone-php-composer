@@ -10,7 +10,7 @@ RUN echo "https://mirrors.aliyun.com/alpine/v3.8/main/" > /etc/apk/repositories 
     && tar -zxvf /tmp/redis.tar.gz -C /usr/src/php/ext \
     && mv /usr/src/php/ext/phpredis-* /usr/src/php/ext/phpredis \
     && docker-php-ext-install phpredis \
-    && composer config -g repo.packagist composer https://packagist.laravel-china.org \
+    && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
     && composer global require phpmd/phpmd --no-suggest --no-ansi --no-interaction \
     && ln -s /srv/vendor/bin/phpmd /usr/local/bin/phpmd \
     && mkdir -p /root/.ssh
